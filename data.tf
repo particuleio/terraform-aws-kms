@@ -3,15 +3,15 @@ data "aws_caller_identity" "current" {}
 data "aws_iam_policy_document" "default_merged" {
   count = var.policy_flavor == "default" ? 1 : 0
   source_policy_documents = [
-    data.aws_iam_policy_document.default
+    data.aws_iam_policy_document.default.json
   ]
 }
 
 data "aws_iam_policy_document" "eks_root_volume_encrytion_merged" {
-  count = var.policy_flavor == "eks_root_volume_encrytion_merged" ? 1 : 0
+  count = var.policy_flavor == "eks_root_volume_encrytion" ? 1 : 0
   source_policy_documents = [
-    data.aws_iam_policy_document.default,
-    data.aws_iam_policy_document.eks_root_volume_encrytion
+    data.aws_iam_policy_document.default.json,
+    data.aws_iam_policy_document.eks_root_volume_encryption.json
   ]
 }
 
@@ -34,7 +34,7 @@ data "aws_iam_policy_document" "default" {
   }
 }
 
-data "aws_iam_policy_document" "eks_root_volume_encrytion" {
+data "aws_iam_policy_document" "eks_root_volume_encryption" {
 
   statement {
     sid    = "Allow service-linked role use of the CMK"
