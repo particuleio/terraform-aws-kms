@@ -6,7 +6,7 @@ data "aws_iam_policy_document" "default_merged" {
   ]
 }
 
-data "aws_iam_policy_document" "eks_root_volume_encrytion_merged" {
+data "aws_iam_policy_document" "eks_root_volume_encryption_merged" {
   source_policy_documents = [
     data.aws_iam_policy_document.default.json,
     data.aws_iam_policy_document.eks_root_volume_encryption.json
