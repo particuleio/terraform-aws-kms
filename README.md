@@ -50,5 +50,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | n/a |
+| <a name="output_key_alias"></a> [key\_alias](#output\_key\_alias) | n/a |
+| <a name="output_key_id"></a> [key\_id](#output\_key\_id) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
