@@ -13,13 +13,13 @@ Manage AWS KMS Key
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.18.0 |
 
 ## Modules
 
@@ -42,8 +42,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alias"></a> [alias](#input\_alias) | n/a | `string` | n/a | yes |
+| <a name="input_customer_master_key_spec"></a> [customer\_master\_key\_spec](#input\_customer\_master\_key\_spec) | n/a | `string` | `"SYMMETRIC_DEFAULT"` | no |
 | <a name="input_description"></a> [description](#input\_description) | n/a | `string` | `""` | no |
 | <a name="input_enable_key_rotation"></a> [enable\_key\_rotation](#input\_enable\_key\_rotation) | n/a | `bool` | `true` | no |
+| <a name="input_key_usage"></a> [key\_usage](#input\_key\_usage) | n/a | `string` | `"ENCRYPT_DECRYPT"` | no |
+| <a name="input_multi_region"></a> [multi\_region](#input\_multi\_region) | n/a | `bool` | `false` | no |
 | <a name="input_policy"></a> [policy](#input\_policy) | n/a | `string` | `""` | no |
 | <a name="input_policy_flavor"></a> [policy\_flavor](#input\_policy\_flavor) | n/a | `string` | `"default"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map(any)` | `{}` | no |
