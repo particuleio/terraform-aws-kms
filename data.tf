@@ -2,6 +2,8 @@ data "aws_caller_identity" "current" {}
 
 data "aws_partition" "current" {}
 
+data "aws_region" "current" {}
+
 data "aws_iam_policy_document" "default_merged" {
   source_policy_documents = [
     data.aws_iam_policy_document.default.json
@@ -11,7 +13,8 @@ data "aws_iam_policy_document" "default_merged" {
 data "aws_iam_policy_document" "eks_root_volume_encryption_merged" {
   source_policy_documents = [
     data.aws_iam_policy_document.default.json,
-    data.aws_iam_policy_document.eks_root_volume_encryption.json
+    data.aws_iam_policy_document.eks_root_volume_encryption.json,
+    data.aws_iam_policy_document.log_group_encryption.json
   ]
 }
 
@@ -82,4 +85,31 @@ data "aws_iam_policy_document" "eks_root_volume_encryption" {
     }
 
   }
+
+}
+
+data "aws_iam_policy_document" "log_group_encryption" {
+  statement {
+    sid    = "Allow Logs"
+    effect = "Allow"
+
+    principals {
+      type = "Service"
+      identifiers = [
+        "logs.${data.aws_region.current.name}.amazonaws.com"
+      ]
+    }
+
+    actions = [
+      "kms:Encrypt*",
+      "kms:Decrypt*",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:Describe*"
+    ]
+
+    resources = ["*"]
+
+  }
+
 }
